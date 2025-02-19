@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "coursework-1_bdb6ef8a"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Coursework-CRS_9f5670fc",
+            "vmArgs": "--module-path \"D:/java fx/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib\"  --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Launch DBConnection",
+            "mainClass": "DBConnection",
+            "classPaths": [
+                "lib/mysql-connector-j-9.0.0.jar"
+            ]
+        }
+    ]
+}
+
