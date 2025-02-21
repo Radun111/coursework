@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="520.0" prefWidth="956.0" style="-fx-background-color: linear-gradient(to bottom, #002b36, #004f70);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView fitHeight="547.0" fitWidth="956.0" opacity="0.18" pickOnBounds="true">
+      <image>
+         <Image url="@Admin_Background.jpg" />
+      </image>
+   </ImageView>
+    
+    <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="956.0" style="-fx-background-color: #003d5b;">
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 10;" text="Enrollment Managament " />
+    </HBox>
+
+    <VBox alignment="TOP_LEFT" layoutX="244.0" layoutY="90.0" prefHeight="450.0" prefWidth="702.0" spacing="20">
+       
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="Enrollment Reports" />
+
+        <HBox spacing="10">
+            <TextField fx:id="searchField" promptText="Search by Student or Course" style="-fx-background-radius: 10; -fx-padding: 5;" />
+            <DatePicker fx:id="fromDate" promptText="From Date" />
+            <DatePicker fx:id="toDate" promptText="To Date" />
+            <Button style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-background-radius: 10;" text="Generate Report" />
+        </HBox>
+
+        <TableView fx:id="reportTable" prefHeight="198.0" prefWidth="702.0" style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;">
+            <columns>
+                <TableColumn prefWidth="100.0" text="Student ID" />
+                <TableColumn prefWidth="150.0" text="Student Name" />
+                <TableColumn prefWidth="100.0" text="Course ID" />
+                <TableColumn prefWidth="150.0" text="Course Title" />
+                <TableColumn prefWidth="100.0" text="Status" />
+                <TableColumn prefWidth="100.0" text="Date Enrolled" />
+            </columns>
+        </TableView>
+
+        <HBox prefHeight="73.0" prefWidth="702.0" spacing="10">
+            <Button style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-background-radius: 10;" text="Export to PDF" />
+            <Button style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 10;" text="Export to Excel" />
+            <Button style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 10;" text="Export to CSV" />
+        </HBox>
+
+        <PieChart fx:id="enrollmentChart" prefHeight="0.0" prefWidth="702.0" />
+    </VBox>
+   <VBox alignment="CENTER" layoutX="14.0" layoutY="90.0" prefHeight="276.0" prefWidth="215.0" spacing="15" style="-fx-background-color: #004f70; -fx-background-radius: 10; -fx-padding: 20;">
+      <children>
+         <Button prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Enrollment Management " />
+         <Button prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Enrollments" />
+         <Button prefHeight="30.0" prefWidth="195.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Pending Approvals" />
+         <Button prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="View Reports" />
+         <Button style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Logout" />
+      </children>
+   </VBox>
+</AnchorPane>
