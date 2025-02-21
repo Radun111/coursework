@@ -19,7 +19,17 @@
             "projectName": "coursework-1_63db8549",
             "vmArgs": "--module-path \"D:/java fx/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib\"  --add-modules javafx.controls,javafx.fxml"
 
-        }
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Launch DBConnection",
+            "mainClass": "DBConnection",
+            "classPaths": [
+              "lib/mysql-connector-j-9.0.0.jar"
+            ]
+          }
+
         
     ]
 }
