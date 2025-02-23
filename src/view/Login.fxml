@@ -12,46 +12,61 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500" prefWidth="516.0" style="-fx-background-color: linear-gradient(to bottom, #004d61, #00293c);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-   <ImageView fitHeight="500.0" fitWidth="516.0" opacity="0.41" pickOnBounds="true">
-      <image>
-         <Image url="@login.jpg" />
-      </image>
-   </ImageView>
-    <VBox alignment="CENTER" focusTraversable="true" spacing="20" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
-        
+<AnchorPane prefHeight="500" prefWidth="516.0" style="-fx-background-color: linear-gradient(to bottom, #004d61, #00293c);" 
+             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+             fx:controller="controller.LoginController">
+
+    <ImageView fitHeight="500.0" fitWidth="516.0" opacity="0.41" pickOnBounds="true">
+        <image>
+            <Image url="@login.jpg" />
+        </image>
+    </ImageView>
+
+    <VBox alignment="CENTER" focusTraversable="true" spacing="20" 
+          AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+
         <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Login" />
-        
+
         <VBox alignment="CENTER_LEFT" prefWidth="300" spacing="5">
-            <Label style="-fx-text-fill: #ffffff; -fx-font-size: 14px;" text="Username:" />
-            <TextField fx:id="usernameField" promptText="Enter your username" style="-fx-background-color: #f0f8ff; -fx-background-radius: 10; -fx-padding: 8;" />
+            <Label style="-fx-text-fill: #ffffff; -fx-font-size: 14px;" text="Email:" />
+            <TextField fx:id="emailField" promptText="Enter your email" 
+                       style="-fx-background-color: #f0f8ff; -fx-background-radius: 10; -fx-padding: 8;" />
         </VBox>
 
         <VBox alignment="CENTER_LEFT" prefWidth="300" spacing="5">
             <Label style="-fx-text-fill: #ffffff; -fx-font-size: 14px;" text="Password:" />
-            <PasswordField fx:id="passwordField" promptText="Enter your password" style="-fx-background-color: #f0f8ff; -fx-background-radius: 10; -fx-padding: 8;" />
+            <PasswordField fx:id="passwordField" promptText="Enter your password" 
+                           style="-fx-background-color: #f0f8ff; -fx-background-radius: 10; -fx-padding: 8;" />
         </VBox>
 
         <HBox alignment="CENTER" prefWidth="300" spacing="15">
             <Label style="-fx-text-fill: #ffffff; -fx-font-size: 14px;" text="Login as:" />
-            <RadioButton style="-fx-text-fill: #ffffff;" text="Student" />
-            <RadioButton style="-fx-text-fill: #ffffff;" text="Admin" />
-         <RadioButton style="-fx-text-fill: #ffffff;" text="Faculty" />
+            <RadioButton fx:id="studentRadio" style="-fx-text-fill: #ffffff;" text="Student" />
+            <RadioButton fx:id="adminRadio" style="-fx-text-fill: #ffffff;" text="Admin" />
+            <RadioButton fx:id="facultyRadio" style="-fx-text-fill: #ffffff;" text="Faculty" />
         </HBox>
 
-       
         <HBox alignment="CENTER" prefHeight="47.0" prefWidth="358.0" spacing="20">
-            <Button prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Sign-Up" />
-            <Button onAction="#reset" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Reset" />
+            <Button fx:id="signupButton" onAction="#openSignup" prefHeight="30.0" prefWidth="102.0" 
+                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 14px; 
+                           -fx-background-radius: 10; -fx-cursor: hand;" 
+                    text="Sign-Up" />
+            <Button fx:id="resetButton" onAction="#reset" prefHeight="30.0" prefWidth="98.0" 
+                    style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 14px; 
+                           -fx-background-radius: 10; -fx-cursor: hand;" 
+                    text="Reset" />
         </HBox>
 
-        
-        <Button onAction="#login" prefHeight="37.0" prefWidth="97.0" style="-fx-text-fill: white; -fx-background-color: green; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Login" />
+        <Button fx:id="loginButton" onAction="#login" prefHeight="37.0" prefWidth="97.0" 
+                style="-fx-text-fill: white; -fx-background-color: green; -fx-font-size: 14px; 
+                       -fx-background-radius: 10; -fx-cursor: hand;" 
+                text="Login" />
 
-        
-        <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 12px;" text="Invalid username or password!" visible="false" />
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 12px;" 
+               text="Invalid username or password!" visible="false" />
+
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
     </VBox>
 </AnchorPane>

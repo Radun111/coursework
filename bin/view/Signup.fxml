@@ -10,8 +10,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="538.0" prefWidth="587.0" style="-fx-background-color: linear-gradient(to bottom, #004d61, #00293c);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+
+<AnchorPane  fx:controller="controller.SignUpController" fx:id="signupPane" prefHeight="538.0" prefWidth="587.0" style="-fx-background-color: linear-gradient(to bottom, #004d61, #00293c);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <ImageView fitHeight="538.0" fitWidth="601.0" opacity="0.41" pickOnBounds="true">
       <image>
          <Image url="@login.jpg" />
@@ -64,7 +69,7 @@
    </VBox>
    <Button fx:id="signupButton" layoutX="251.0" layoutY="478.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10; -fx-cursor: hand;" text="Sign Up" />
    <Button fx:id="cancelButton" layoutX="459.0" layoutY="478.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10; -fx-cursor: hand;" text="Cancel" />
-    <Button fx:id="btnBackToLogin" layoutX="337.0" layoutY="477.0" prefHeight="37.0" prefWidth="115.0" style="-fx-font-size: 14px; -fx-background-color: #e74c3c; -fx-text-fill: #ffffff; -fx-background-radius: 10;" text="Back to Login" />
+    <Button fx:id="btnBackToLogin" onAction="#backToLogin" layoutX="337.0" layoutY="477.0" prefHeight="37.0" prefWidth="115.0" style="-fx-font-size: 14px; -fx-background-color: #e74c3c; -fx-text-fill: #ffffff; -fx-background-radius: 10;" text="Back to Login" />
    <cursor>
       <Cursor fx:constant="HAND" />
    </cursor>
