@@ -4,7 +4,20 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "DBConnection",
+            "request": "launch",
+            "mainClass": "db.DBConnection",
+            "projectName": "coursework-1_63db8549"
+        },
+        {
+            "type": "java",
+            "name": "TestDBConnection",
+            "request": "launch",
+            "mainClass": "db.TestDBConnection",
+            "projectName": "coursework-1_63db8549"
+        },
         {
             "type": "java",
             "name": "Current File",
@@ -18,7 +31,6 @@
             "mainClass": "Main",
             "projectName": "coursework-1_63db8549",
             "vmArgs": "--module-path \"D:/java fx/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib\"  --add-modules javafx.controls,javafx.fxml"
-
         },
         {
             "type": "java",
@@ -26,11 +38,9 @@
             "name": "Launch DBConnection",
             "mainClass": "DBConnection",
             "classPaths": [
-              "lib/mysql-connector-j-9.0.0.jar"
+                "lib/mysql-connector-j-9.0.0.jar"
             ]
-          }
-
-        
+        }
     ]
 }
 

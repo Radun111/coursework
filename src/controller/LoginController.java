@@ -1,156 +1,129 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import db.DBConnection; 
+import db.DBConnection;
 
 public class LoginController {
 
-    @FXML private TextField emailField; 
-    @FXML private PasswordField passwordField;
-    @FXML private Label errorLabel;
-    @FXML private RadioButton studentRadio;
-    @FXML private RadioButton adminRadio;
-    @FXML private RadioButton facultyRadio;
+    @FXML private TextField emailField; // Input field for email
+    @FXML private PasswordField passwordField; // Input field for password
+    @FXML private Label errorLabel; // Label to display error messages
+    @FXML private RadioButton studentRadio; // Radio button for student role
+    @FXML private RadioButton adminRadio; // Radio button for admin role
+    @FXML private RadioButton facultyRadio; // Radio button for faculty role
 
-    // Reset fields when "Reset" button is clicked
     @FXML
-    private void reset() {
+    private void reset() { // Reset form fields and error message
         emailField.clear();
         passwordField.clear();
-        errorLabel.setText(""); 
+        errorLabel.setText("");
         errorLabel.setVisible(false);
     }
 
-    // Handle login button click
     @FXML
-    private void login() {
+    private void login(ActionEvent event) { // Handle login button click
         String email = emailField.getText().trim();
         String password = passwordField.getText().trim();
 
-        if (email.isEmpty() || password.isEmpty()) {
-            errorLabel.setText("Email or password cannot be empty!");
-            errorLabel.setVisible(true);
+        if (email.isEmpty() || password.isEmpty()) { // Validate input fields
+            showError("Email or password cannot be empty!");
             return;
         }
 
-        String role = getSelectedRole();
-        if (role.isEmpty()) {
-            errorLabel.setText("Please select a role!");
-            errorLabel.setVisible(true);
+        String role = getSelectedRole(); // Get selected role (Student, Admin, Faculty)
+        if (role.isEmpty()) { // Validate role selection
+            showError("Please select a role!");
             return;
         }
 
-        // Validate credentials based on role
-        if (validateLogin(email, password, role)) {
-            System.out.println("Login successful as " + role);
-            errorLabel.setVisible(false);
-            loadDashboard(role);
+        if (validateLogin(email, password, role)) { // Validate login credentials
+            loadDashboard(event, role, email); // Load appropriate dashboard
         } else {
-            errorLabel.setText("Invalid email or password!");
-            errorLabel.setVisible(true);
+            showError("Invalid email or password!");
         }
     }
 
-    // Determine selected role
-    private String getSelectedRole() {
-        if (studentRadio.isSelected()) {
-            return "Student";
-        } else if (adminRadio.isSelected()) {
-            return "Admin";
-        } else if (facultyRadio.isSelected()) {
-            return "Faculty";
-        }
+    private void showError(String message) { // Display error message
+        errorLabel.setText(message);
+        errorLabel.setVisible(true);
+    }
+
+    private String getSelectedRole() { // Get the selected role from radio buttons
+        if (studentRadio.isSelected()) return "Student";
+        if (adminRadio.isSelected()) return "Admin";
+        if (facultyRadio.isSelected()) return "Faculty";
         return "";
     }
 
-    // Validate email and password from the correct database table
-    private boolean validateLogin(String email, String password, String role) {
-        boolean isValid = false;
-        String table = "";
+    private boolean validateLogin(String email, String password, String role) { // Validate login against database
+        String table = switch (role) { // Determine table based on role
+            case "Student" -> "students";
+            case "Admin" -> "admins";
+            case "Faculty" -> "faculty";
+            default -> "";
+        };
 
-        // Select the correct table based on role
-        switch (role) {
-            case "Student":
-                table = "students";
-                break;
-            case "Admin":
-                table = "admins";
-                break;
-            case "Faculty":
-                table = "faculty";
-                break;
-        }
+        if (table.isEmpty()) return false;
 
         String query = "SELECT * FROM " + table + " WHERE email = ? AND password = ?";
-
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
             stmt.setString(1, email);
             stmt.setString(2, password);
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                isValid = true; 
-            }
-        } catch (Exception e) {
+            return stmt.executeQuery().next(); // Check if a matching record exists
+        } catch (SQLException e) {
             e.printStackTrace();
-            errorLabel.setText("Database error!");
-            errorLabel.setVisible(true);
+            showError("Database error!");
+            return false;
         }
-        return isValid;
     }
 
-    // Load dashboard based on role selection
-    private void loadDashboard(String role) {
-        String fxmlFile = "";
-        switch (role) {
-            case "Admin": 
-                fxmlFile = "/view/AdminDashboard.fxml"; 
-                break;
-            case "Student": 
-                fxmlFile = "/view/StuDashboard.fxml"; 
-                break;
-            case "Faculty": 
-                fxmlFile = "/view/FacultyDashboard.fxml"; 
-                break;
-        }
+    private void loadDashboard(ActionEvent event, String role, String email) { // Load the appropriate dashboard
+        String fxmlFile = switch (role) { // Determine FXML file based on role
+            case "Admin" -> "/view/AdminDashboard.fxml";
+            case "Student" -> "/view/StuDashboard.fxml";
+            case "Faculty" -> "/view/FacultyDashboard.fxml";
+            default -> "";
+        };
 
         try {
-            Parent dashboardPage = FXMLLoader.load(getClass().getResource(fxmlFile));
-            Stage stage = (Stage) emailField.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent dashboardPage = loader.load();
+
+            if (role.equals("Student")) { // Pass email to Student Dashboard controller
+                StuDashboardController controller = loader.getController();
+                controller.setStudentEmail(email);
+            }
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(dashboardPage));
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            errorLabel.setText("Error loading dashboard!");
-            errorLabel.setVisible(true);
+            showError("Error loading dashboard!");
         }
     }
 
-    // Navigate to Sign-Up page
     @FXML
-    private void openSignup(ActionEvent event) throws IOException {
+    private void openSignup(ActionEvent event) throws IOException { // Open sign-up page
         Parent signupPage = FXMLLoader.load(getClass().getResource("/view/SignUp.fxml"));
-        Scene signupScene = new Scene(signupPage);
-
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(signupScene);
+        window.setScene(new Scene(signupPage));
+        window.centerOnScreen();
         window.show();
     }
 }
