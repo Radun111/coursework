@@ -5,21 +5,24 @@ import java.time.LocalDate;
 public class Student {
     private int studentId;
     private String name;
-    private LocalDate dateOfBirth;
-    private String address;
     private String email;
     private String phoneNumber;
+    private String password;
+    private LocalDate dateOfBirth;
+    private String address;
 
-    // Constructor, getters, and setters
-    public Student(int studentId, String name, LocalDate dateOfBirth, String address, String email, String phoneNumber) {
+    // Constructor with all fields
+    public Student(int studentId, String name, String email, String phoneNumber, String password, LocalDate dateOfBirth, String address) {
         this.studentId = studentId;
         this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
     }
 
+    // Getters and Setters
     public int getStudentId() {
         return studentId;
     }
@@ -28,19 +31,23 @@ public class Student {
         return name;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }
