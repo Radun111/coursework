@@ -2,70 +2,43 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:controller="controller.StuDashboardController" prefHeight="600.0" prefWidth="900.0" 
-            style="-fx-background-color: linear-gradient(to bottom, #005c8a, #003d5b);" 
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #005c8a, #003d5b);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StuDashboardController">
     
-    <ImageView fitHeight="620.0" fitWidth="900.0" opacity="0.18" pickOnBounds="true">
+       <ImageView fitHeight="620.0" fitWidth="900.0" opacity="0.18" pickOnBounds="true">
         <image>
             <Image url="@Stu_Background.jpg" />
         </image>
     </ImageView>
     
     <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #003d5b;">
-        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 10;" 
-               text="Welcome, [Student Name] (ID: [Student ID])" />
+        <Label fx:id="welcomeLabel" layoutX="20" layoutY="50" prefHeight="52.0" prefWidth="668.0" style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: white;" text=" Welcome, Student!" textFill="#000000e9" />
     </HBox>
 
-    <VBox alignment="CENTER" layoutX="14.0" layoutY="90.0" prefWidth="200.0" spacing="15" 
-          style="-fx-background-color: #004f70; -fx-background-radius: 10; -fx-padding: 20;">
+    <VBox alignment="CENTER" layoutX="8.0" layoutY="121.0" prefWidth="200.0" spacing="15" style="-fx-background-color: #004f70; -fx-background-radius: 10; -fx-padding: 20;">
         
-        <Button prefHeight="30.0" prefWidth="177.0" 
-                style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; 
-                       -fx-background-radius: 10; -fx-cursor: hand;" 
-                text="Home" />
+        <Button onAction="#handleHomeButtonAction" prefHeight="30.0" prefWidth="177.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px;-fx-background-radius: 10; -fx-cursor: hand;" text="Home" textFill="#86c8f2" />
         
-        <Button fx:id="profileButton" onAction="#handleProfileButtonAction" prefHeight="30.0" prefWidth="177.0" 
-                style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; 
-                       -fx-background-radius: 10; -fx-cursor: hand;" 
-                text="Profile" />
+        <Button fx:id="profileButton" onAction="#handleProfileButtonAction" prefHeight="30.0" prefWidth="177.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px;-fx-background-radius: 10; -fx-cursor: hand;" text="Profile" />
         
-        <Button fx:id="ViewCoursesButton" onAction="#handleViewCoursesButtonAction" prefHeight="30.0" prefWidth="210.0" 
-                style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; 
-                       -fx-background-radius: 10; -fx-cursor: hand;" 
-                text="View Courses" />
+        <Button fx:id="viewCoursesButton" onAction="#handleViewCoursesButtonAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px;-fx-background-radius: 10; -fx-cursor: hand;" text="View Courses" />
         
-        <Button prefHeight="30.0" prefWidth="180.0" 
-                style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; 
-                       -fx-background-radius: 10; -fx-cursor: hand;" 
-                text="Register for Courses" />
+        <Button fx:id="registerCoursesButton" onAction="#handleRegisterCoursesButtonAction" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px;-fx-background-radius: 10; -fx-cursor: hand;" text="Register for Courses" />
         
-        <Button prefHeight="30.0" prefWidth="236.0" 
-                style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; 
-                       -fx-background-radius: 10; -fx-cursor: hand;" 
-                text="View Academic Record" />
+        <Button fx:id="viewAcademicRecordsButton" onAction="#handleViewAcademicRecordsButtonAction" prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px;-fx-background-radius: 10; -fx-cursor: hand;" text="View Academic Record" />
         
-        <Button style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; 
-                       -fx-background-radius: 10; -fx-cursor: hand;" 
-                text="Logout" />
+        <Button fx:id="logoutButton" onAction="#handleLogoutButtonAction" prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px;-fx-background-radius: 10; -fx-cursor: hand;" text="Logout" />
     </VBox>
-
-    <VBox alignment="CENTER_LEFT" layoutX="230.0" layoutY="90.0" prefHeight="450.0" prefWidth="650.0" spacing="20">
-        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" 
-               text="Your Courses (Current Semester)" />
-        <ListView fx:id="coursesListView" prefHeight="300.0" prefWidth="600.0" 
-                  style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;" />
-
-        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" 
-               text="Notifications:" />
-        <ListView fx:id="notificationsListView" prefHeight="100.0" prefWidth="600.0" 
-                  style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;" />
-    </VBox>
+   <HBox alignment="CENTER_LEFT" layoutY="80.0" prefHeight="30.0" prefWidth="900.0" style="-fx-background-color: #86c8f2;">
+      <children>
+           <Label fx:id="studentIdLabel" prefHeight="20.0" prefWidth="228.0" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-font-weight: bold;" text="Student ID: " />
+                  <Label fx:id="studentNameLabel" prefHeight="24.0" prefWidth="284.0" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-font-weight: bold;" text="Student Name: " />
+           <Label fx:id="studentEmailLabel" prefHeight="20.0" prefWidth="324.0" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-font-weight: bold;" text="Email: " />
+      </children>
+   </HBox>
 </AnchorPane>
