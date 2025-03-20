@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #002b36, #004f70);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #002b36, #004f70);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
    <ImageView fitHeight="543.0" fitWidth="907.0" layoutX="-5.0" layoutY="61.0" opacity="0.18" pickOnBounds="true">
       <image>
          <Image url="@Admin_Background.jpg" />
@@ -17,7 +17,7 @@
    </ImageView>
     
     <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="907.0" style="-fx-background-color: #003d5b;">
-        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 10;" text="Admin Dashboard - Welcome, [Admin Name] (ID: [Admin ID])" />
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 10;" text="Admin Dashboard - Welcome, Admin" />
     </HBox>
     
     <VBox alignment="CENTER" layoutX="10.0" layoutY="90.0" prefWidth="200.0" spacing="15" style="-fx-background-color: #004f70; -fx-background-radius: 10; -fx-padding: 20;">
@@ -32,9 +32,9 @@
 
     <VBox alignment="CENTER_LEFT" layoutX="230.0" layoutY="90.0" prefHeight="450.0" prefWidth="650.0" spacing="20">
         <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="Total Courses" />
-        <ListView fx:id="activityListView" prefHeight="150.0" prefWidth="600.0" style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;" />
+        <ListView fx:id="coursesListView" prefHeight="150.0" prefWidth="600.0" style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;" />
 
         <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="Total Students " />
-        <ListView fx:id="pendingCoursesListView" prefHeight="150.0" prefWidth="600.0" style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;" />
+        <ListView fx:id="studentsListView" prefHeight="150.0" prefWidth="600.0" style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;" />
     </VBox>
 </AnchorPane>
