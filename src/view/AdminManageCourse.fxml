@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="548.0" prefWidth="1252.0" style="-fx-background-color: linear-gradient(to bottom, #005c8a, #003d5b);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="548.0" prefWidth="1252.0" style="-fx-background-color: linear-gradient(to bottom, #005c8a, #003d5b);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminManageCourseController">
    <ImageView fitHeight="548.0" fitWidth="1252.0" opacity="0.18" pickOnBounds="true">
       <image>
          <Image url="@Admin_Background.jpg" />
@@ -49,14 +49,14 @@
     </VBox>
    <VBox alignment="CENTER" layoutX="14.0" layoutY="90.0" prefWidth="200.0" spacing="15" style="-fx-background-color: #004f70; -fx-background-radius: 10; -fx-padding: 20;">
       <children>
-         <Button prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Home" />
-         <Button prefHeight="30.0" prefWidth="194.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Courses" />
-         <Button prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Students" />
-         <Button prefHeight="50.0" prefWidth="195.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text=" Enrollment&#10;Managment" />
-         <Button prefHeight="30.0" prefWidth="203.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Academic Records" />
-         <Button prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Reports &amp; Analytics" />
-         <Button style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Logout" />
-      </children>
+    <Button fx:id="homeButton" prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Home" />
+    <Button fx:id="manageCoursesButton" prefHeight="30.0" prefWidth="194.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Courses" />
+    <Button fx:id="manageStudentsButton" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Students" />
+    <Button fx:id="enrollmentManagementButton" prefHeight="50.0" prefWidth="195.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text=" Enrollment&#10;Managment" />
+    <Button fx:id="academicRecordsButton" prefHeight="30.0" prefWidth="203.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Academic Records" />
+    <Button fx:id="reportsAnalyticsButton" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Reports &amp; Analytics" />
+    <Button fx:id="logoutButton" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Logout" />
+    </children>
    </VBox>
      <Button fx:id="btnUpdateCourse" layoutX="622.0" layoutY="473.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Update Course" />
      <Button fx:id="btnReset" layoutX="869.0" layoutY="473.0" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Reset" />

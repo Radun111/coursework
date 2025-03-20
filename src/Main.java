@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL resource = getClass().getResource("/view/Login.fxml"); 
+        URL resource = getClass().getResource("/view/AdminDashboard.fxml"); 
         if (resource == null) {
             throw new IllegalStateException("FXML file 'Main.fxml' not found in /view directory!");
         }
