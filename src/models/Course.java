@@ -9,7 +9,7 @@ public class Course {
     private String prerequisites;
     private int maxCapacity;
 
-    
+    // Constructor, getters, and setters
     public Course(int courseId, String courseName, int creditHours, String instructor, String department, String prerequisites, int maxCapacity) {
         this.courseId = courseId;
         this.courseName = courseName;
@@ -20,11 +20,31 @@ public class Course {
         this.maxCapacity = maxCapacity;
     }
 
-    public int getCourseId() { return courseId; }
-    public String getCourseName() { return courseName; }
-    public String getInstructor() { return instructor; }
-    public String getDepartment() { return department; }
-    public int getCreditHours() { return creditHours; }
-    public String getPrerequisites() { return prerequisites; }
-    public int getMaxCapacity() { return maxCapacity; }
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public int getCreditHours() {
+        return creditHours;
+    }
+
+    public String getInstructor() {
+        return instructor;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public String getPrerequisites() {
+        return prerequisites;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
 }
