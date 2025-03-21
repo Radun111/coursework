@@ -83,21 +83,17 @@ public class EnrollmentManagementController implements Initializable {
 
     @FXML
     private void handleLogout() {
-        // Close the current window and return to the login screen
-        Stage stage = (Stage) enrolledStudentsListView.getScene().getWindow();
-        stage.close();
         navigateToInterface("/view/AdminDashboard.fxml");
-    }
+    }   
 
-    // Helper method to navigate to a specific interface
+    // Helper method to navigate to a specific interface in the same window
     private void navigateToInterface(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            Stage stage = (Stage) enrolledStudentsListView.getScene().getWindow(); // Get the current stage
+            stage.setScene(new Scene(root)); // Set the new scene
             stage.setTitle("Enrollment Management System");
-            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "Could not load the interface: " + e.getMessage());

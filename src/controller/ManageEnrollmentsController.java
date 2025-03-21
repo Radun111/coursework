@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import db.DBConnection;
 import models.Enrollment;
@@ -113,54 +112,42 @@ public class ManageEnrollmentsController implements Initializable {
     }
 
     // Add a new enrollment
-   private void addEnrollment() {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddEnrollmentDialog.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Add Enrollment");
-        stage.initModality(Modality.APPLICATION_MODAL); // Block interaction with other windows
-        stage.showAndWait();
-
-        // Reload enrollments after adding
-        enrollmentTable.getItems().clear();
-        loadEnrollments();
-    } catch (IOException e) {
-        e.printStackTrace();
-        showAlert("Error", "Could not load the add enrollment dialog.");
-    }
-}
-
-private void updateEnrollment() {
-    Enrollment selectedEnrollment = enrollmentTable.getSelectionModel().getSelectedItem();
-    if (selectedEnrollment != null) {
+    private void addEnrollment() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateEnrollmentDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddEnrollmentDialog.fxml"));
             Parent root = loader.load();
 
-            UpdateEnrollmentDialogController controller = loader.getController();
-            controller.setEnrollmentId(selectedEnrollment.getEnrollmentId());
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Update Enrollment");
-            stage.initModality(Modality.APPLICATION_MODAL); // Block interaction with other windows
-            stage.showAndWait();
-
-            // Reload enrollments after updating
-            enrollmentTable.getItems().clear();
-            loadEnrollments();
+            Stage stage = (Stage) enrollmentTable.getScene().getWindow(); // Get the current stage
+            stage.setScene(new Scene(root)); // Set the new scene
+            stage.setTitle("Add Enrollment");
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Error", "Could not load the update enrollment dialog.");
+            showAlert("Error", "Could not load the add enrollment dialog.");
         }
-    } else {
-        showAlert("Error", "No enrollment selected.");
     }
-}
-       
+
+    // Update an existing enrollment
+    private void updateEnrollment() {
+        Enrollment selectedEnrollment = enrollmentTable.getSelectionModel().getSelectedItem();
+        if (selectedEnrollment != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateEnrollmentDialog.fxml"));
+                Parent root = loader.load();
+
+                UpdateEnrollmentDialogController controller = loader.getController();
+                controller.setEnrollmentId(selectedEnrollment.getEnrollmentId());
+
+                Stage stage = (Stage) enrollmentTable.getScene().getWindow(); // Get the current stage
+                stage.setScene(new Scene(root)); // Set the new scene
+                stage.setTitle("Update Enrollment");
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert("Error", "Could not load the update enrollment dialog.");
+            }
+        } else {
+            showAlert("Error", "No enrollment selected.");
+        }
+    }
 
     // Delete an enrollment
     private void deleteEnrollment() {
@@ -182,6 +169,46 @@ private void updateEnrollment() {
             }
         } else {
             showAlert("Error", "No enrollment selected.");
+        }
+    }
+
+    // Navigation methods for left bar buttons
+    @FXML
+    private void handleEnrollmentManagement() {
+        navigateToInterface("/view/AdminEnrollmentManagement.fxml");
+    }
+
+    @FXML
+    private void handleManageEnrollments() {
+        navigateToInterface("/view/AdminManageEnrollment.fxml");
+    }
+
+    @FXML
+    private void handlePendingApprovals() {
+        navigateToInterface("/view/AdminPendingApprovals.fxml");
+    }
+
+    @FXML
+    private void handleViewReports() {
+        navigateToInterface("/view/AdminViewReports.fxml");
+    }
+
+    @FXML
+    private void handleLogout() {
+        navigateToInterface("/view/AdminDashboard.fxml");
+    }   
+    
+    // Helper method to navigate to a specific interface in the same window
+    private void navigateToInterface(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage stage = (Stage) enrollmentTable.getScene().getWindow(); // Get the current stage
+            stage.setScene(new Scene(root)); // Set the new scene
+            stage.setTitle("Enrollment Management System");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load the interface: " + e.getMessage());
         }
     }
 

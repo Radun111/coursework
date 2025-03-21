@@ -1,10 +1,14 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import db.DBConnection;
 import models.CourseRegistration;
 
@@ -142,6 +146,47 @@ public class ViewReportsController implements Initializable {
     // Export report to CSV
     private void exportToCSV() {
         showAlert("Info", "Export to CSV functionality not implemented yet.");
+    }
+
+    // Navigation methods for left bar buttons
+    @FXML
+    private void handleEnrollmentManagement() {
+        navigateToInterface("/view/AdminEnrollmentManagement.fxml");
+    }
+
+    @FXML
+    private void handleManageEnrollments() {
+        navigateToInterface("/view/AdminManageEnrollment.fxml");
+    }
+
+    @FXML
+    private void handlePendingApprovals() {
+        navigateToInterface("/view/AdminPendingApprovals.fxml");
+    }
+
+    @FXML
+    private void handleViewReports() {
+        navigateToInterface("/view/AdminViewReports.fxml");
+    }
+
+    @FXML
+    private void handleLogout() {
+            navigateToInterface("/view/AdminDashboard.fxml");
+        }    
+    
+
+    // Helper method to navigate to a specific interface in the same window
+    private void navigateToInterface(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage stage = (Stage) reportTable.getScene().getWindow(); // Get the current stage
+            stage.setScene(new Scene(root)); // Set the new scene
+            stage.setTitle("Enrollment Management System");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load the interface: " + e.getMessage());
+        }
     }
 
     // Show an alert dialog

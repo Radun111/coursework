@@ -55,12 +55,10 @@
         <PieChart fx:id="enrollmentChart" prefHeight="150.0" prefWidth="702.0" />
     </VBox>
    <VBox alignment="CENTER" layoutX="14.0" layoutY="90.0" prefHeight="276.0" prefWidth="215.0" spacing="15" style="-fx-background-color: #004f70; -fx-background-radius: 10; -fx-padding: 20;">
-      <children>
-         <Button prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Enrollment Management" />
-         <Button prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Enrollments" />
-         <Button prefHeight="30.0" prefWidth="195.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Pending Approvals" />
-         <Button prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="View Reports" />
-         <Button style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Logout" />
-      </children>
-   </VBox>
+        <Button onAction="#handleEnrollmentManagement" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Enrollment Management" />
+        <Button onAction="#handleManageEnrollments" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Enrollments" />
+        <Button onAction="#handlePendingApprovals" prefHeight="30.0" prefWidth="195.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Pending Approvals" />
+        <Button onAction="#handleViewReports" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="View Reports" />
+        <Button onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Logout" />
+    </VBox>
 </AnchorPane>
