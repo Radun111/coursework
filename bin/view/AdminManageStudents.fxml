@@ -44,9 +44,9 @@
     </VBox>
    <VBox alignment="CENTER" layoutX="14.0" layoutY="90.0" prefWidth="200.0" spacing="15" style="-fx-background-color: #004f70; -fx-background-radius: 10; -fx-padding: 20;">
       <children>
-         <Button fx:id="homeButton" prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Home" />
+         <Button fx:id="homeButton" prefHeight="30.0" prefWidth="236.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Home" />
      <Button fx:id="manageCoursesButton" prefHeight="30.0" prefWidth="194.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Courses" />
-     <Button fx:id="manageStudentsButton" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Students" />
+     <Button fx:id="manageStudentsButton" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #0084b4; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Manage Students" />
      <Button fx:id="enrollmentManagementButton" prefHeight="50.0" prefWidth="195.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text=" Enrollment&#10;Managment" />
      <Button fx:id="academicRecordsButton" prefHeight="30.0" prefWidth="203.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Academic Records" />
       <Button fx:id="reportsAnalyticsButton" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #005c8a; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-cursor: hand;" text="Reports &amp; Analytics" />

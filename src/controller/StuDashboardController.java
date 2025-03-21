@@ -5,13 +5,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import db.DBConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -21,12 +26,16 @@ public class StuDashboardController {
     @FXML private Label studentNameLabel; // Label to display student name
     @FXML private Label studentIdLabel; // Label to display student ID
     @FXML private Label studentEmailLabel; // Label to display student email
+    @FXML private ListView<String> coursesListView; // ListView to display enrolled courses
+    @FXML private ListView<String> notificationsListView; // ListView to display notifications
 
     private String studentEmail; // Stores the logged-in student's email
 
     public void setStudentEmail(String email) { // Set the student's email
         this.studentEmail = email;
         loadStudentData(); // Load student data when email is set
+        loadEnrolledCourses(); // Load enrolled courses
+        loadNotifications(); // Load notifications
     }
 
     private void loadStudentData() { // Load student details from the database
@@ -58,6 +67,51 @@ public class StuDashboardController {
             e.printStackTrace();
             welcomeLabel.setText("Error loading student details."); // Handle database error
         }
+    }
+
+    private void loadEnrolledCourses() { // Load enrolled courses for the student
+        if (studentEmail == null || studentEmail.isEmpty()) {
+            return;
+        }
+
+        // Query to fetch enrolled courses for the student
+        String query = "SELECT c.course_name FROM student_courses sc " +
+                       "JOIN courses c ON sc.course_id = c.course_id " +
+                       "JOIN students s ON sc.student_id = s.student_id " +
+                       "WHERE s.email = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, studentEmail);
+            ResultSet rs = stmt.executeQuery();
+
+            List<String> courses = new ArrayList<>();
+            while (rs.next()) {
+                courses.add(rs.getString("course_name")); // Add course names to the list
+            }
+
+            ObservableList<String> courseList = FXCollections.observableArrayList(courses);
+            coursesListView.setItems(courseList); // Set items in the ListView
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error loading enrolled courses: " + e.getMessage());
+        }
+    }
+
+    private void loadNotifications() { // Load notifications for the student
+        if (studentEmail == null || studentEmail.isEmpty()) {
+            return;
+        }
+
+        // Example notifications (can be fetched from the database or hardcoded)
+        List<String> notifications = new ArrayList<>();
+        notifications.add("Your registration for 'Introduction to Computer Science' has been approved.");
+        notifications.add("Upcoming deadline: Assignment 1 for 'Data Structures' is due on 2023-10-15.");
+        notifications.add("New course available: 'Artificial Intelligence' is now open for registration.");
+
+        ObservableList<String> notificationList = FXCollections.observableArrayList(notifications);
+        notificationsListView.setItems(notificationList); // Set items in the ListView
     }
 
     @FXML
