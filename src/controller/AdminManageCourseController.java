@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -37,6 +38,15 @@ public class AdminManageCourseController implements Initializable {
     @FXML private Button btnDeleteCourse; // Button to delete a course
     @FXML private Button btnReset; // Button to reset the form
 
+    @FXML private Button homeButton;
+    @FXML private Button manageCoursesButton;
+    @FXML private Button manageStudentsButton;
+    @FXML private Button enrollmentManagementButton;
+    @FXML private Button academicRecordsButton;
+    @FXML private Button reportsAnalyticsButton;
+    @FXML private Button logoutButton;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Bind table columns to Course model properties
@@ -55,6 +65,16 @@ public class AdminManageCourseController implements Initializable {
         btnUpdateCourse.setOnAction(event -> updateCourse());
         btnDeleteCourse.setOnAction(event -> deleteCourse());
         btnReset.setOnAction(event -> resetForm());
+
+         // Set button actions
+         homeButton.setOnAction(event -> navigateTo(event, "/view/AdminDashboard.fxml", "Admin Dashboard"));
+         manageCoursesButton.setOnAction(event -> navigateTo(event, "/view/AdminManageCourse.fxml", "Manage Courses"));
+         manageStudentsButton.setOnAction(event -> navigateTo(event, "/view/AdminManageStudents.fxml", "Manage Students"));
+         enrollmentManagementButton.setOnAction(event -> navigateTo(event, "/view/AdminEnrollmentManagement.fxml", "Enrollment Management"));
+         academicRecordsButton.setOnAction(event -> navigateTo(event, "/view/AdminAcadamicRecords.fxml", "Academic Records"));
+         reportsAnalyticsButton.setOnAction(event -> navigateTo(event, "/view/AdminReportsAnalytics.fxml", "Reports & Analytics"));
+         logoutButton.setOnAction(event -> navigateTo(event, "/view/Login.fxml", "Login"));
+     
     }
 
     private void loadCourses() { // Load all courses from the database
@@ -164,4 +184,20 @@ public class AdminManageCourseController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+private void navigateTo(javafx.event.ActionEvent event, String fxmlPath, String title) { // Navigate to a specific page
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle(title); // Set window title
+        stage.centerOnScreen(); // Center the window
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+        System.out.println("Error: Could not load " + fxmlPath); // Handle navigation error
+    }
+}
 }
