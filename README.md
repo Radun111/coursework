@@ -59,3 +59,17 @@ The Course Registration System (CRS) is a JavaFX-based application designed to a
 
 5. **Generate Reports**:
    - Generate reports on course enrollments, vacancies, and student schedules in the **"Reports"** section.
+
+## Screenshots
+
+### Login Page
+![Login Page](/screenshots/login_page.png)
+
+### Student Dashboard
+![Student Dashboard](/screenshots/student_dashboard.png)
+
+### Admin Dashboard
+![Admin Dashboard](/screenshots/admin_dashboard.png)
+
+### Course Registration
+![Course Registration](/screenshots/course_registration.png)
