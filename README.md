@@ -62,14 +62,49 @@ The Course Registration System (CRS) is a JavaFX-based application designed to a
 
 ## Screenshots
 
+## STUDENTS
+
 ### Login Page
 ![Login Page](/screenshots/login_page.png)
 
 ### Student Dashboard
 ![Student Dashboard](/screenshots/student_dashboard.png)
 
+### Student Profile
+![Student Profile](/screenshots/student_profile.png)
+
+### Student View Courses
+![Student View Courses](/screenshots/student_viewcourses.png)
+
+### Student Register for Courses
+![Student Register for Courses](/screenshots/student_registerforcourses1.png)
+
+### Student Register for Courses
+![Student Register for Courses](/screenshots/student_registerforcourses2.png)
+
+### Student View Academic Recordes 
+![Student View Academic Recordes ](/screenshots/student_viewacademicrecordes.png)
+
+
+## ADMIN
+
 ### Admin Dashboard
 ![Admin Dashboard](/screenshots/admin_dashboard.png)
 
-### Course Registration
-![Course Registration](/screenshots/course_registration.png)
+### Admin Manage Courses
+![Admin Manage Courses](/screenshots/admin_managecourses.png)
+
+### Admin Manage Students
+![Admin Manage Students](/screenshots/admin_managestudents.png)
+
+### Admin Enrollment Management 
+![Admin Enrollment Management ](/screenshots/admin_enrollmentmanagement1.png)
+![Admin Enrollment Management ](/screenshots/admin_enrollmentmanagement2.png)
+![Admin Enrollment Management ](/screenshots/admin_enrollmentmanagement3.png)
+![Admin Enrollment Management ](/screenshots/admin_enrollmentmanagement4.png)
+
+### Admin Academic Recordes 
+![Admin Academic Recordes ](/screenshots/admin_academicrecordes.png)
+
+### Admin Reports 
+![Admin Reports ](/screenshots/admin_reports.png)
